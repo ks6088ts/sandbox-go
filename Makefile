@@ -1,5 +1,6 @@
 GOGET ?= go get "-u"
 GOBUILD ?= go build
+PKGS ?= $(shell go list ./...)
 
 # https://stackoverflow.com/questions/18136918/how-to-get-current-relative-directory-of-your-makefile
 MAKEFILE_PATH ?= $(abspath $(lastword $(MAKEFILE_LIST)))
@@ -19,9 +20,18 @@ help:
 build: ## build applications
 	$(GOBUILD) $(LDFLAGS) -o $(BIN_PATH) $(PKG_DIR)
 
+.PHONY: lint-install
+lint-install: ## install lint
+	@hash golint > /dev/null 2>&1; if [ $$? -ne 0 ]; then \
+		$(GOGET) golang.org/x/lint/golint; \
+	fi
+
+.PHONY: lint
+lint: lint-install ## lint codes
+	for PKG in $(PKGS); do golint -set_exit_status $$PKG || exit 1; done;
+
 .PHONY: ci
-ci: ## run ci tests
-	make build
+ci: lint build ## run ci tests
 	$(BIN_PATH) --help
 	$(BIN_PATH) hello --help
 
@@ -42,7 +52,7 @@ cobra-install: ## install cobra
 	fi
 
 .PHONY: cobra-init
-cobra-init: ## initialize cobra cli
+cobra-init: cobra-install ## initialize cobra cli
 	mkdir -p $(COBRA_CMD_DIR) && \
 	cd $(COBRA_CMD_DIR) && \
 	cobra init \
@@ -50,7 +60,7 @@ cobra-init: ## initialize cobra cli
 		--config ../../$(COBRA_CONFIG)
 
 .PHONY: cobra-add
-cobra-add: ## add cobra command
+cobra-add: cobra-install ## add cobra command
 	cd $(COBRA_CMD_DIR) && \
 	cobra add $(COBRA_CMD) \
 		--config ../../$(COBRA_CONFIG) \
