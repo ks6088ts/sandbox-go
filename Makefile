@@ -1,8 +1,12 @@
 GOGET ?= go get "-u"
+GOBUILD ?= go build
 
 # https://stackoverflow.com/questions/18136918/how-to-get-current-relative-directory-of-your-makefile
 MAKEFILE_PATH ?= $(abspath $(lastword $(MAKEFILE_LIST)))
 REPO_NAME ?= $(notdir $(patsubst %/,%,$(dir $(MAKEFILE_PATH))))
+LDFLAGS ?= -ldflags="-s -w"
+OUT_DIR ?= outputs
+PKG_DIR ?= ./cmd/$(REPO_NAME)
 
 # https://marmelab.com/blog/2016/02/29/auto-documented-makefile.html
 .PHONY: help
@@ -10,6 +14,9 @@ help:
 	@grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) | sort | awk 'BEGIN {FS = ":.*?## "}; {printf "\033[36m%-30s\033[0m %s\n", $$1, $$2}'
 .DEFAULT_GOAL := help
 
+.PHONY: build
+build: ## build applications
+	$(GOBUILD) $(LDFLAGS) -o $(OUT_DIR)/$(REPO_NAME) $(PKG_DIR)
 
 # ---
 # Cobra: https://github.com/spf13/cobra
