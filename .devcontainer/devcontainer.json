@@ -1,0 +1,17 @@
+{
+	"name": "sandbox-go",
+	"dockerComposeFile": [
+		"../docker-compose.yml",
+	],
+	"service": "go",
+	"workspaceFolder": "/go/src/github.com/ks6088ts/sandbox-go",
+	"settings": {
+		"terminal.integrated.shell.linux": "/bin/bash",
+		"go.useLanguageServer": true,
+		"go.gopath": "/go",
+		"go.inferGopath": true,
+	},
+	"extensions": [
+		"golang.go",
+	]
+}

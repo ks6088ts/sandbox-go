@@ -1,0 +1,10 @@
+version: '3'
+services:
+  go:
+    build:
+      context: .
+      dockerfile: ./docker/go/Dockerfile
+    container_name: go
+    tty: true
+    volumes:
+      - ./:/go/src/github.com/ks6088ts/sandbox-go
