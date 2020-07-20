@@ -1,5 +1,7 @@
 GOGET ?= go get "-u"
 GOBUILD ?= go build
+GOFMT ?= gofmt "-s"
+GOFILES := $(shell find . -name "*.go")
 PKGS ?= $(shell go list ./...)
 
 # https://stackoverflow.com/questions/18136918/how-to-get-current-relative-directory-of-your-makefile
@@ -21,17 +23,29 @@ build: ## build applications
 	$(GOBUILD) $(LDFLAGS) -o $(BIN_PATH) $(PKG_DIR)
 
 .PHONY: lint-install
-lint-install: ## install lint
+lint-install:
 	@hash golint > /dev/null 2>&1; if [ $$? -ne 0 ]; then \
 		$(GOGET) golang.org/x/lint/golint; \
 	fi
 
 .PHONY: lint
-lint: lint-install ## lint codes
+lint: lint-install ## lint
 	for PKG in $(PKGS); do golint -set_exit_status $$PKG || exit 1; done;
 
+.PHONY: fmt
+fmt: ## fmt
+	$(GOFMT) -w $(GOFILES)
+
+.PHONY: vet
+vet: ## vet
+	for PKG in $(PKGS); do go vet $$PKG || exit 1; done;
+
+.PHONY: tidy
+tidy: ## tidy
+	go mod tidy
+
 .PHONY: ci
-ci: lint build ## run ci tests
+ci: lint vet build ## run ci tests
 	$(BIN_PATH) --help
 	$(BIN_PATH) hello --help
 
@@ -46,7 +60,7 @@ COBRA_CMD ?= hello
 COBRA_PARENT_CMD ?= rootCmd
 
 .PHONY: cobra-install
-cobra-install: ## install cobra
+cobra-install:
 	@hash cobra > /dev/null 2>&1; if [ $$? -ne 0 ]; then \
 		$(GOGET) github.com/spf13/cobra/cobra; \
 	fi
