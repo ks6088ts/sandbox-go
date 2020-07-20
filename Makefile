@@ -23,6 +23,7 @@ build: ## build applications
 ci: ## run ci tests
 	make build
 	$(BIN_PATH) --help
+	$(BIN_PATH) hello --help
 
 # ---
 # Cobra: https://github.com/spf13/cobra
@@ -31,6 +32,8 @@ ci: ## run ci tests
 COBRA_CONFIG ?= .cobra.yml
 COBRA_CMD_DIR ?= cmd/$(REPO_NAME)
 COBRA_PKG_NAME ?= github.com/ks6088ts/$(REPO_NAME)/$(COBRA_CMD_DIR)
+COBRA_CMD ?= hello
+COBRA_PARENT_CMD ?= rootCmd
 
 .PHONY: cobra-install
 cobra-install: ## install cobra
@@ -45,3 +48,10 @@ cobra-init: ## initialize cobra cli
 	cobra init \
 		--pkg-name $(COBRA_PKG_NAME) \
 		--config ../../$(COBRA_CONFIG)
+
+.PHONY: cobra-add
+cobra-add: ## add cobra command
+	cd $(COBRA_CMD_DIR) && \
+	cobra add $(COBRA_CMD) \
+		--config ../../$(COBRA_CONFIG) \
+		--parent $(COBRA_PARENT_CMD)
