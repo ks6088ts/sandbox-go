@@ -7,6 +7,7 @@ REPO_NAME ?= $(notdir $(patsubst %/,%,$(dir $(MAKEFILE_PATH))))
 LDFLAGS ?= -ldflags="-s -w"
 OUT_DIR ?= outputs
 PKG_DIR ?= ./cmd/$(REPO_NAME)
+BIN_PATH ?= $(OUT_DIR)/$(REPO_NAME)
 
 # https://marmelab.com/blog/2016/02/29/auto-documented-makefile.html
 .PHONY: help
@@ -16,7 +17,12 @@ help:
 
 .PHONY: build
 build: ## build applications
-	$(GOBUILD) $(LDFLAGS) -o $(OUT_DIR)/$(REPO_NAME) $(PKG_DIR)
+	$(GOBUILD) $(LDFLAGS) -o $(BIN_PATH) $(PKG_DIR)
+
+.PHONY: ci
+ci: ## run ci tests
+	make build
+	$(BIN_PATH) --help
 
 # ---
 # Cobra: https://github.com/spf13/cobra
