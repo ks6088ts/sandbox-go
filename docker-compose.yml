@@ -4,7 +4,14 @@ services:
     build:
       context: .
       dockerfile: ./docker/go/Dockerfile
+      args:
+        - http_proxy=${HTTP_PROXY}
+        - https_proxy=${HTTPS_PROXY}
+        - work_dir=${WORK_DIR}
     container_name: go
     tty: true
     volumes:
-      - ./:/go/src/github.com/ks6088ts/sandbox-go
+      - ./:${WORK_DIR}
+    environment:
+      - http_proxy=${HTTP_PROXY}
+      - https_proxy=${HTTPS_PROXY}
