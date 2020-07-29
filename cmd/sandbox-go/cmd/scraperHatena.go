@@ -31,7 +31,7 @@ import (
 	"github.com/spf13/cobra"
 )
 
-func newHatenaCmd() *cobra.Command {
+func newScraperHatenaCmd() *cobra.Command {
 	type options struct {
 		url   string
 		debug bool
@@ -39,9 +39,9 @@ func newHatenaCmd() *cobra.Command {
 
 	opt := options{}
 	cmd := &cobra.Command{
-		Use:   "hatena",
-		Short: "hatena command",
-		Long:  `hatena bookmark scrape command`,
+		Use:   "scraperHatena",
+		Short: "scrape hatena command",
+		Long:  `scrape hatena bookmark scrape command`,
 		Run: func(cmd *cobra.Command, args []string) {
 			scraper := scraper.NewHatenaScraper(opt.url, opt.debug)
 			results, err := scraper.Scrape()
@@ -62,6 +62,6 @@ func newHatenaCmd() *cobra.Command {
 }
 
 func init() {
-	cmd := newHatenaCmd()
+	cmd := newScraperHatenaCmd()
 	rootCmd.AddCommand(cmd)
 }
