@@ -22,6 +22,10 @@ help:
 build: ## build applications
 	$(GOBUILD) $(LDFLAGS) -o $(BIN_PATH) $(PKG_DIR)
 
+.PHONY: tools-install
+tools-install:
+	$(GOGET) golang.org/x/tools/gopls
+
 .PHONY: lint-install
 lint-install:
 	@hash golint > /dev/null 2>&1; if [ $$? -ne 0 ]; then \
