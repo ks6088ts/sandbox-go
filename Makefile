@@ -1,6 +1,6 @@
 GOGET ?= go get -u -v
 GOBUILD ?= go build
-GOFMT ?= gofmt "-s
+GOFMT ?= gofmt -s
 GOTEST ?= go test
 
 GOFILES := $(shell find . -name "*.go")
