@@ -7,7 +7,8 @@ ARG https_proxy=""
 WORKDIR ${work_dir}
 
 RUN apt-get -y update && apt-get install -y \
-    make
+    make \
+    sudo
 
 COPY Makefile Makefile
 RUN make grpc-install && \
