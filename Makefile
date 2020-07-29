@@ -84,7 +84,17 @@ cobra-add: cobra-install ## add cobra command
 # gRPC: https://grpc.io/
 # ---
 
+PROTO_DIR ?= protos
+PROTO_FILE ?= $(PROTO_DIR)/helloworld.proto
+
 .PHONY: grpc-install
 grpc-install:
 	$(GOGET) github.com/golang/protobuf/protoc-gen-go
 	apt install -y protobuf-compiler
+
+.PHONY: protoc
+protoc:
+	protoc \
+		--proto_path $(PROTO_DIR) \
+		--go_out=plugins=grpc:/go/src/ \
+		$(PROTO_FILE)
