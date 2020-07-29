@@ -1,4 +1,4 @@
-GOGET ?= go get "-u"
+GOGET ?= go get -u -v
 GOBUILD ?= go build
 GOFMT ?= gofmt "-s"
 GOFILES := $(shell find . -name "*.go")
@@ -79,3 +79,12 @@ cobra-add: cobra-install ## add cobra command
 	cobra add $(COBRA_CMD) \
 		--config ../../$(COBRA_CONFIG) \
 		--parent $(COBRA_PARENT_CMD)
+
+# ---
+# gRPC: https://grpc.io/
+# ---
+
+.PHONY: grpc-install
+grpc-install:
+	$(GOGET) github.com/golang/protobuf/protoc-gen-go
+	apt install -y protobuf-compiler
