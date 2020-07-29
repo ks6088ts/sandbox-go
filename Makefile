@@ -1,4 +1,4 @@
-GOGET ?= go get "-u"
+GOGET ?= go get -u -v
 GOBUILD ?= go build
 GOFMT ?= gofmt "-s"
 GOFILES := $(shell find . -name "*.go")
@@ -21,6 +21,10 @@ help:
 .PHONY: build
 build: ## build applications
 	$(GOBUILD) $(LDFLAGS) -o $(BIN_PATH) $(PKG_DIR)
+
+.PHONY: tools-install
+tools-install:
+	$(GOGET) golang.org/x/tools/gopls
 
 .PHONY: lint-install
 lint-install:
@@ -79,3 +83,22 @@ cobra-add: cobra-install ## add cobra command
 	cobra add $(COBRA_CMD) \
 		--config ../../$(COBRA_CONFIG) \
 		--parent $(COBRA_PARENT_CMD)
+
+# ---
+# gRPC: https://grpc.io/
+# ---
+
+PROTO_DIR ?= protos
+PROTO_FILE ?= $(PROTO_DIR)/helloworld.proto
+
+.PHONY: grpc-install
+grpc-install:
+	$(GOGET) github.com/golang/protobuf/protoc-gen-go
+	sudo apt-get install -y protobuf-compiler
+
+.PHONY: protoc
+protoc:
+	protoc \
+		--proto_path $(PROTO_DIR) \
+		--go_out=plugins=grpc:. \
+		$(PROTO_FILE)
