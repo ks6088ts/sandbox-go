@@ -1,6 +1,8 @@
 GOGET ?= go get -u -v
 GOBUILD ?= go build
-GOFMT ?= gofmt "-s"
+GOFMT ?= gofmt -s
+GOTEST ?= go test
+
 GOFILES := $(shell find . -name "*.go")
 PKGS ?= $(shell go list ./...)
 
@@ -21,6 +23,10 @@ help:
 .PHONY: build
 build: ## build applications
 	$(GOBUILD) $(LDFLAGS) -o $(BIN_PATH) $(PKG_DIR)
+
+.PHONY: test
+test: ## run tests
+	$(GOTEST) -cover -v ./...
 
 .PHONY: tools-install
 tools-install:
@@ -49,7 +55,7 @@ tidy: ## tidy
 	go mod tidy
 
 .PHONY: ci
-ci: lint vet build ## run ci tests
+ci: lint vet build test ## run ci tests
 	$(BIN_PATH) --help
 	$(BIN_PATH) hello --help
 
