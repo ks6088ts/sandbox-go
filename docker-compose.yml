@@ -27,3 +27,9 @@ services:
     ports:
       - ${GRAFANA_PORT}:3000
     restart: always
+  prometheus:
+    image: prom/prometheus
+    volumes:
+      - ./docker/prometheus/prometheus.yml:/etc/prometheus/prometheus.yml
+    ports:
+      - ${PROMETHEUS_PORT}:9090

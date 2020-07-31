@@ -26,3 +26,9 @@ go mod tidy
 ## Links
 
 * [Configure with environment variables](https://grafana.com/docs/grafana/latest/administration/configuration/#configure-with-environment-variables)
+
+# Prometheus
+
+## Links
+
+* [Prometheus:GETTING STARTED](https://prometheus.io/docs/prometheus/latest/getting_started/#getting-started)
