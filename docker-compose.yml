@@ -15,3 +15,15 @@ services:
     environment:
       - HTTP_PROXY=${COMMON_HTTP_PROXY}
       - HTTPS_PROXY=${COMMON_HTTPS_PROXY}
+  grafana:
+    build:
+      context: .
+      dockerfile: ./docker/grafana/Dockerfile
+    container_name: grafana
+    env_file: ./docker/grafana/env
+    environment:
+      - HTTP_PROXY=${COMMON_HTTP_PROXY}
+      - HTTPS_PROXY=${COMMON_HTTPS_PROXY}
+    ports:
+      - ${GRAFANA_PORT}:3000
+    restart: always
