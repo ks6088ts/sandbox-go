@@ -5,13 +5,13 @@ services:
       context: .
       dockerfile: ./docker/go/Dockerfile
       args:
-        - http_proxy=${HTTP_PROXY}
-        - https_proxy=${HTTPS_PROXY}
-        - work_dir=${WORK_DIR}
+        - HTTP_PROXY=${COMMON_HTTP_PROXY}
+        - HTTPS_PROXY=${COMMON_HTTPS_PROXY}
+        - WORK_DIR=${GO_WORK_DIR}
     container_name: go
     tty: true
     volumes:
-      - ./:${WORK_DIR}
+      - ./:${GO_WORK_DIR}
     environment:
-      - http_proxy=${HTTP_PROXY}
-      - https_proxy=${HTTPS_PROXY}
+      - HTTP_PROXY=${COMMON_HTTP_PROXY}
+      - HTTPS_PROXY=${COMMON_HTTPS_PROXY}
