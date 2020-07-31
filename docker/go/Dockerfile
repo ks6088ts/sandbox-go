@@ -1,10 +1,10 @@
 FROM golang:1.14.6-buster
 
-ARG work_dir=""
-ARG http_proxy=""
-ARG https_proxy=""
+ARG WORK_DIR=""
+ARG HTTP_PROXY=""
+ARG HTTPS_PROXY=""
 
-WORKDIR ${work_dir}
+WORKDIR ${WORK_DIR}
 
 RUN apt-get -y update && apt-get install -y \
     make \

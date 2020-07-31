@@ -20,3 +20,16 @@ go mod tidy
 * [Go plugin for the protocol compiler](https://grpc.io/docs/languages/go/quickstart/#prerequisites)
 * [Protocol Buffer Compiler Installation](https://grpc.io/docs/protoc-installation/#install-using-a-package-manager)
 * [grpc-go/examples/helloworld](https://github.com/grpc/grpc-go/tree/master/examples/helloworld)
+
+# Grafana
+
+## Links
+
+* [Configure with environment variables](https://grafana.com/docs/grafana/latest/administration/configuration/#configure-with-environment-variables)
+* [Provisioning Grafana:Data sources](https://grafana.com/docs/grafana/latest/administration/provisioning/#data-sources)
+
+# Prometheus
+
+## Links
+
+* [Prometheus:GETTING STARTED](https://prometheus.io/docs/prometheus/latest/getting_started/#getting-started)
