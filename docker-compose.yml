@@ -15,6 +15,19 @@ services:
     environment:
       - HTTP_PROXY=${COMMON_HTTP_PROXY}
       - HTTPS_PROXY=${COMMON_HTTPS_PROXY}
+  cli:
+    build:
+      context: .
+      dockerfile: ./docker/cli/Dockerfile
+      args:
+        - HTTP_PROXY=${COMMON_HTTP_PROXY}
+        - HTTPS_PROXY=${COMMON_HTTPS_PROXY}
+        - WORK_DIR=${GO_WORK_DIR}
+    container_name: cli
+    tty: true
+    environment:
+      - HTTP_PROXY=${COMMON_HTTP_PROXY}
+      - HTTPS_PROXY=${COMMON_HTTPS_PROXY}
   grafana:
     build:
       context: .
