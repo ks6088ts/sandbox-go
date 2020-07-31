@@ -26,6 +26,7 @@ go mod tidy
 ## Links
 
 * [Configure with environment variables](https://grafana.com/docs/grafana/latest/administration/configuration/#configure-with-environment-variables)
+* [Provisioning Grafana:Data sources](https://grafana.com/docs/grafana/latest/administration/provisioning/#data-sources)
 
 # Prometheus
 
