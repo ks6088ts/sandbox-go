@@ -33,3 +33,16 @@ go mod tidy
 ## Links
 
 * [Prometheus:GETTING STARTED](https://prometheus.io/docs/prometheus/latest/getting_started/#getting-started)
+
+# Docker
+
+```bash
+docker-compose build cli
+docker run --rm sandbox-go_cli ./cli --help
+```
+
+## Links
+* [Networking in Compose: Specify custom networks](https://docs.docker.com/compose/networking/#specify-custom-networks)
+* [Issues with COPY when using multistage Dockerfile builds — no such file or directory](https://stackoverflow.com/a/50070187)
+* [Issue with Docker multi-stage builds](https://stackoverflow.com/a/56057877)
+* [Using cgo with the go command](https://golang.org/cmd/cgo/#hdr-Using_cgo_with_the_go_command)
