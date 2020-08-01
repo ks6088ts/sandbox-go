@@ -1,17 +1,15 @@
 version: '3'
 services:
-  go:
+  cli:
     build:
       context: .
-      dockerfile: ./docker/go/Dockerfile
+      dockerfile: ./docker/cli/Dockerfile
       args:
         - HTTP_PROXY=${COMMON_HTTP_PROXY}
         - HTTPS_PROXY=${COMMON_HTTPS_PROXY}
         - WORK_DIR=${GO_WORK_DIR}
-    container_name: go
+    container_name: cli
     tty: true
-    volumes:
-      - ./:${GO_WORK_DIR}
     environment:
       - HTTP_PROXY=${COMMON_HTTP_PROXY}
       - HTTPS_PROXY=${COMMON_HTTPS_PROXY}

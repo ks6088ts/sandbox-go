@@ -1,0 +1,30 @@
+version: '3'
+services:
+  grafana:
+    build:
+      context: .
+      dockerfile: ./docker/grafana/Dockerfile
+    container_name: grafana
+    env_file: ./docker/grafana/env
+    environment:
+      - HTTP_PROXY=${COMMON_HTTP_PROXY}
+      - HTTPS_PROXY=${COMMON_HTTPS_PROXY}
+    volumes:
+      - ./docker/grafana/datasources:/etc/grafana/provisioning/datasources
+    ports:
+      - ${GRAFANA_PORT}:3000
+    restart: always
+    networks:
+      - shared-network
+  prometheus:
+    image: prom/prometheus
+    volumes:
+      - ./docker/prometheus/prometheus.yml:/etc/prometheus/prometheus.yml
+    ports:
+      - ${PROMETHEUS_PORT}:9090
+    networks:
+      - shared-network
+
+networks:
+  shared-network:
+    external: true
