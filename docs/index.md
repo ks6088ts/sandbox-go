@@ -1,8 +1,21 @@
-# Remote container
+# Visual Studio Code
 
-## Links
+## Remote container
+
+1. `cmd + shift + p` to open command palette
+1. select `install extension`
+1. install [Remote - Containers](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-containers), `ms-vscode-remote.remote-containers`
+
+### Links
 * [Docker Compose keep container running](https://stackoverflow.com/a/55953120)
 * [microsoft/vscode-remote-try-go](https://github.com/microsoft/vscode-remote-try-go)
+
+## Settings
+
+1. `cmd + ,` to open settings
+
+### Links
+* [GitHub: vscode-textbook](https://github.com/vscode-textbook)
 
 # Go Modules
 
