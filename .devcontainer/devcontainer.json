@@ -9,7 +9,7 @@
 		"terminal.integrated.shell.linux": "/bin/bash",
 		"go.useLanguageServer": true,
 		"go.gopath": "/go",
-		"go.inferGopath": true,
+		"go.inferGopath": false,
 	},
 	"extensions": [
 		"golang.go",
