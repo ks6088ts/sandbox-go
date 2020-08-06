@@ -47,6 +47,35 @@ go mod tidy
 
 * [Prometheus:GETTING STARTED](https://prometheus.io/docs/prometheus/latest/getting_started/#getting-started)
 
+# GraphQL
+
+## Links
+
+* [春の入門祭り🌸 #7 作って学ぶGraphQL。gqlgenを用いて鉄道データ検索API開発入門](https://future-architect.github.io/articles/20200609/)
+
+# PostgreSQL
+
+```bash
+docker-compose -f docker-compose.gql.yml up -d
+docker-compose -f docker-compose.gql.yml exec postgresql \
+    bash -c "psql -U user"
+```
+
+```sql
+# list tables
+\dt;
+
+# show table
+\d <table>;
+
+# select data from table
+select * from <table>;
+```
+
+## Links
+
+* [PostgreSQLの基本的なコマンド](https://qiita.com/H-A-L/items/fe8cb0e0ee0041ff3ceb)
+* [駅データ.jp > ダウンロード](https://ekidata.jp/dl/)
 # Docker
 
 ```bash
