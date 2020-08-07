@@ -97,7 +97,7 @@ docker-compose -f docker-compose.gql.yml up -d postgresql
 
 # generate code for a postgres schema
 mkdir -p models
-xo "pgsql://user:password@localhost/db?sslmode=disable" -o models
+xo "pgsql://user:password@postgresql/db?sslmode=disable" -o pkg/gql/models
 ```
 
 ## Links

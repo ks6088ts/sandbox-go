@@ -23,6 +23,11 @@ services:
       - ./docker/postgresql/init:/docker-entrypoint-initdb.d
       - ./data:/data
       - ./docker/postgresql:/var/lib/pgdata
+    networks:
+      - shared-network
 volumes:
   pg-data:
     driver: local
+networks:
+  shared-network:
+    external: true
