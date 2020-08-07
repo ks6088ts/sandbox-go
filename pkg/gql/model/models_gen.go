@@ -7,6 +7,16 @@ type NewTodo struct {
 	UserID string `json:"userId"`
 }
 
+type Station struct {
+	StationCd       int        `json:"stationCD"`
+	LineName        *string    `json:"lineName"`
+	StationName     string     `json:"stationName"`
+	Address         *string    `json:"address"`
+	BeforeStation   *Station   `json:"beforeStation"`
+	AfterStation    *Station   `json:"afterStation"`
+	TransferStation []*Station `json:"transferStation"`
+}
+
 type Todo struct {
 	ID   string `json:"id"`
 	Text string `json:"text"`
