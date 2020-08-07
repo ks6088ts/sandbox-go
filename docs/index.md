@@ -88,3 +88,18 @@ docker run --rm sandbox-go_cli ./cli --help
 * [Issues with COPY when using multistage Dockerfile builds — no such file or directory](https://stackoverflow.com/a/50070187)
 * [Issue with Docker multi-stage builds](https://stackoverflow.com/a/56057877)
 * [Using cgo with the go command](https://golang.org/cmd/cgo/#hdr-Using_cgo_with_the_go_command)
+
+# xo
+
+```bash
+# start PostgreSQL server
+docker-compose -f docker-compose.gql.yml up -d postgresql
+
+# generate code for a postgres schema
+mkdir -p models
+xo "pgsql://user:password@localhost/db?sslmode=disable" -o models
+```
+
+## Links
+
+* [xo/xo](https://github.com/xo/xo)

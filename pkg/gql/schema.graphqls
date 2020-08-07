@@ -16,6 +16,8 @@ type User {
 
 type Query {
   todos: [Todo!]!
+  stationByCD(stationCD: Int): Station!
+  stationByName(stationName: String): [Station]
 }
 
 input NewTodo {
@@ -25,4 +27,14 @@ input NewTodo {
 
 type Mutation {
   createTodo(input: NewTodo!): Todo!
+}
+
+type Station {
+    stationCD: Int!
+    lineName: String
+    stationName: String!
+    address: String
+    beforeStation: Station
+    afterStation: Station
+    transferStation: [Station]
 }
