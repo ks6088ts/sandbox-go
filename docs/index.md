@@ -49,6 +49,15 @@ go mod tidy
 
 # GraphQL
 
+```
+query findStations {
+  stationByCD(stationCD: 1110104) {
+    stationCD
+    stationName
+  }
+}
+```
+
 ## Links
 
 * [春の入門祭り🌸 #7 作って学ぶGraphQL。gqlgenを用いて鉄道データ検索API開発入門](https://future-architect.github.io/articles/20200609/)

@@ -46,7 +46,16 @@ This application is a tool to generate the needed files
 to quickly create a Cobra application.`,
 	Run: func(cmd *cobra.Command, args []string) {
 		port := "8080"
-		srv := handler.NewDefaultServer(generated.NewExecutableSchema(generated.Config{Resolvers: &gql.Resolver{}}))
+		srv := handler.NewDefaultServer(generated.NewExecutableSchema(generated.Config{Resolvers: &gql.Resolver{
+			DbConfig: gql.DatabaseConfig{
+				Driver:   "postgres",
+				Host:     "postgresql",
+				Port:     5432,
+				User:     "user",
+				Password: "password",
+				Dbname:   "db",
+			},
+		}}))
 
 		http.Handle("/", playground.Handler("GraphQL playground", "/query"))
 		http.Handle("/query", srv)

@@ -8,6 +8,9 @@ import (
 	"fmt"
 	"math/rand"
 
+	// import PostgreSQL driver
+	_ "github.com/lib/pq"
+
 	"github.com/ks6088ts/sandbox-go/pkg/gql/generated"
 	"github.com/ks6088ts/sandbox-go/pkg/gql/model"
 )
@@ -27,11 +30,11 @@ func (r *queryResolver) Todos(ctx context.Context) ([]*model.Todo, error) {
 }
 
 func (r *queryResolver) StationByCd(ctx context.Context, stationCd *int) (*model.Station, error) {
-	panic(fmt.Errorf("not implemented"))
+	return r.getStationByCD(ctx, stationCd)
 }
 
 func (r *queryResolver) StationByName(ctx context.Context, stationName *string) ([]*model.Station, error) {
-	panic(fmt.Errorf("not implemented"))
+	return nil, nil
 }
 
 // Mutation returns generated.MutationResolver implementation.
