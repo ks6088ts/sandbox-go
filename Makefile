@@ -118,3 +118,9 @@ gqlgen-install:
 	@hash gqlgen > /dev/null 2>&1; if [ $$? -ne 0 ]; then \
 		$(GOGET) github.com/99designs/gqlgen; \
 	fi
+
+.PHONY: xo-install
+xo-install:
+	@hash xo > /dev/null 2>&1; if [ $$? -ne 0 ]; then \
+		$(GOGET) github.com/xo/xo; \
+	fi

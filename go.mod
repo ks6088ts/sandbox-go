@@ -5,10 +5,12 @@ go 1.14
 require (
 	github.com/99designs/gqlgen v0.11.3
 	github.com/agnivade/levenshtein v1.1.0 // indirect
+	github.com/denisenkom/go-mssqldb v0.0.0-20200620013148-b91950f658ec // indirect
 	github.com/fsnotify/fsnotify v1.4.9 // indirect
 	github.com/gocolly/colly/v2 v2.1.0
 	github.com/golang/protobuf v1.4.2
 	github.com/hashicorp/golang-lru v0.5.4 // indirect
+	github.com/lib/pq v1.8.0 // indirect
 	github.com/matryer/moq v0.0.0-20200607124540-4638a53893e6 // indirect
 	github.com/mitchellh/go-homedir v1.1.0
 	github.com/mitchellh/mapstructure v1.3.3 // indirect
@@ -25,6 +27,9 @@ require (
 	github.com/urfave/cli/v2 v2.2.0 // indirect
 	github.com/vektah/dataloaden v0.3.0 // indirect
 	github.com/vektah/gqlparser/v2 v2.0.1
+	github.com/xo/dburl v0.0.0-20200727080105-4a02649c2fea // indirect
+	github.com/xo/xo v0.0.0-20200425011923-7818603ff52b // indirect
+	golang.org/x/crypto v0.0.0-20200728195943-123391ffb6de // indirect
 	golang.org/x/net v0.0.0-20200625001655-4c5254603344 // indirect
 	golang.org/x/sys v0.0.0-20200625212154-ddb9806d33ae // indirect
 	golang.org/x/text v0.3.3 // indirect
