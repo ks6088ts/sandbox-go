@@ -19,11 +19,18 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 */
+
+// Package cmd ...
 package cmd
 
 import (
-	"fmt"
+	"log"
+	"net/http"
 
+	"github.com/99designs/gqlgen/graphql/handler"
+	"github.com/99designs/gqlgen/graphql/playground"
+	"github.com/ks6088ts/sandbox-go/pkg/gql"
+	"github.com/ks6088ts/sandbox-go/pkg/gql/generated"
 	"github.com/spf13/cobra"
 )
 
@@ -38,7 +45,15 @@ Cobra is a CLI library for Go that empowers applications.
 This application is a tool to generate the needed files
 to quickly create a Cobra application.`,
 	Run: func(cmd *cobra.Command, args []string) {
-		fmt.Println("gqlServer called")
+		port := "8080"
+		srv := handler.NewDefaultServer(generated.NewExecutableSchema(generated.Config{Resolvers: &gql.Resolver{}}))
+
+		http.Handle("/", playground.Handler("GraphQL playground", "/query"))
+		http.Handle("/query", srv)
+
+		log.Printf("connect to http://localhost:%s/ for GraphQL playground", port)
+		log.Fatal(http.ListenAndServe(":"+port, nil))
+
 	},
 }
 
