@@ -3,7 +3,7 @@ module github.com/ks6088ts/sandbox-go
 go 1.14
 
 require (
-	github.com/99designs/gqlgen v0.11.3 // indirect
+	github.com/99designs/gqlgen v0.11.3
 	github.com/agnivade/levenshtein v1.1.0 // indirect
 	github.com/fsnotify/fsnotify v1.4.9 // indirect
 	github.com/gocolly/colly/v2 v2.1.0
@@ -24,6 +24,7 @@ require (
 	github.com/stretchr/testify v1.4.0
 	github.com/urfave/cli/v2 v2.2.0 // indirect
 	github.com/vektah/dataloaden v0.3.0 // indirect
+	github.com/vektah/gqlparser/v2 v2.0.1
 	golang.org/x/net v0.0.0-20200625001655-4c5254603344 // indirect
 	golang.org/x/sys v0.0.0-20200625212154-ddb9806d33ae // indirect
 	golang.org/x/text v0.3.3 // indirect
