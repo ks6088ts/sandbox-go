@@ -58,7 +58,7 @@ go mod tidy
 ```bash
 docker-compose -f docker-compose.gql.yml up -d
 docker-compose -f docker-compose.gql.yml exec postgresql \
-    bash -c "psql -U user"
+    bash -c "psql -U user -d db"
 ```
 
 ```sql
@@ -76,6 +76,8 @@ select * from <table>;
 
 * [PostgreSQLの基本的なコマンド](https://qiita.com/H-A-L/items/fe8cb0e0ee0041ff3ceb)
 * [駅データ.jp > ダウンロード](https://ekidata.jp/dl/)
+* [Connecting to a PostgreSQL database with Go's database/sql package](https://www.calhoun.io/connecting-to-a-postgresql-database-with-gos-database-sql-package/)
+
 # Docker
 
 ```bash
@@ -96,8 +98,8 @@ docker run --rm sandbox-go_cli ./cli --help
 docker-compose -f docker-compose.gql.yml up -d postgresql
 
 # generate code for a postgres schema
-mkdir -p models
-xo "pgsql://user:password@postgresql/db?sslmode=disable" -o pkg/gql/models
+mkdir -p pkg/gql/xo
+xo "pgsql://user:password@postgresql/db?sslmode=disable" -o pkg/gql/xo
 ```
 
 ## Links
