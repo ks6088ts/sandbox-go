@@ -65,8 +65,8 @@ query findStations {
 # PostgreSQL
 
 ```bash
-docker-compose -f docker-compose.gql.yml up -d
-docker-compose -f docker-compose.gql.yml exec postgresql \
+docker-compose -f docker-compose.db.yml up -d postgresql
+docker-compose -f docker-compose.db.yml exec postgresql \
     bash -c "psql -U user -d db"
 ```
 
@@ -104,7 +104,7 @@ docker run --rm sandbox-go_cli ./cli --help
 
 ```bash
 # start PostgreSQL server
-docker-compose -f docker-compose.gql.yml up -d postgresql
+docker-compose -f docker-compose.db.yml up -d postgresql
 
 # generate code for a postgres schema
 mkdir -p pkg/gql/xo
