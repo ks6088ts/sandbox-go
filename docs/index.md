@@ -47,6 +47,46 @@ go mod tidy
 
 * [Prometheus:GETTING STARTED](https://prometheus.io/docs/prometheus/latest/getting_started/#getting-started)
 
+# GraphQL
+
+```
+query findStations {
+  stationByCD(stationCD: 1110104) {
+    stationCD
+    stationName
+  }
+}
+```
+
+## Links
+
+* [春の入門祭り🌸 #7 作って学ぶGraphQL。gqlgenを用いて鉄道データ検索API開発入門](https://future-architect.github.io/articles/20200609/)
+
+# PostgreSQL
+
+```bash
+docker-compose -f docker-compose.db.yml up -d postgresql
+docker-compose -f docker-compose.db.yml exec postgresql \
+    bash -c "psql -U user -d db"
+```
+
+```sql
+# list tables
+\dt;
+
+# show table
+\d <table>;
+
+# select data from table
+select * from <table>;
+```
+
+## Links
+
+* [PostgreSQLの基本的なコマンド](https://qiita.com/H-A-L/items/fe8cb0e0ee0041ff3ceb)
+* [駅データ.jp > ダウンロード](https://ekidata.jp/dl/)
+* [Connecting to a PostgreSQL database with Go's database/sql package](https://www.calhoun.io/connecting-to-a-postgresql-database-with-gos-database-sql-package/)
+
 # Docker
 
 ```bash
@@ -59,3 +99,18 @@ docker run --rm sandbox-go_cli ./cli --help
 * [Issues with COPY when using multistage Dockerfile builds — no such file or directory](https://stackoverflow.com/a/50070187)
 * [Issue with Docker multi-stage builds](https://stackoverflow.com/a/56057877)
 * [Using cgo with the go command](https://golang.org/cmd/cgo/#hdr-Using_cgo_with_the_go_command)
+
+# xo
+
+```bash
+# start PostgreSQL server
+docker-compose -f docker-compose.db.yml up -d postgresql
+
+# generate code for a postgres schema
+mkdir -p pkg/gql/xo
+xo "pgsql://user:password@postgresql/db?sslmode=disable" -o pkg/gql/xo
+```
+
+## Links
+
+* [xo/xo](https://github.com/xo/xo)

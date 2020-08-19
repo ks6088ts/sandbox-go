@@ -1,0 +1,33 @@
+version: '3'
+services:
+  postgresql:
+    build:
+      context: .
+      dockerfile: ./docker/postgresql/Dockerfile
+      args:
+        - HTTP_PROXY=${COMMON_HTTP_PROXY}
+        - HTTPS_PROXY=${COMMON_HTTPS_PROXY}
+        - WORK_DIR=${POSTGRESQL_WORK_DIR}
+    container_name: postgresql
+    environment:
+      - HTTP_PROXY=${COMMON_HTTP_PROXY}
+      - HTTPS_PROXY=${COMMON_HTTPS_PROXY}
+      - POSTGRES_DB=${POSTGRESQL_DB}
+      - POSTGRES_USER=${POSTGRESQL_USER}
+      - POSTGRES_PASSWORD=${POSTGRESQL_PASSWORD}
+      - POSTGRES_INITDB_ARGS=${POSTGRESQL_INITDB_ARGS}
+    ports:
+      - ${POSTGRESQL_PORT}:5432
+    user: root
+    volumes:
+      - ./docker/postgresql/init:/docker-entrypoint-initdb.d
+      - ./data:/data
+      - ./docker/postgresql:/var/lib/pgdata
+    networks:
+      - shared-network
+volumes:
+  pg-data:
+    driver: local
+networks:
+  shared-network:
+    external: true

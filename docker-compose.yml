@@ -15,3 +15,9 @@ services:
     environment:
       - HTTP_PROXY=${COMMON_HTTP_PROXY}
       - HTTPS_PROXY=${COMMON_HTTPS_PROXY}
+    networks:
+      - shared-network
+
+networks:
+  shared-network:
+    external: true

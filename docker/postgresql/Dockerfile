@@ -1,0 +1,7 @@
+FROM postgres:13-alpine
+
+ARG WORK_DIR=""
+ARG HTTP_PROXY=""
+ARG HTTPS_PROXY=""
+
+WORKDIR ${WORK_DIR}

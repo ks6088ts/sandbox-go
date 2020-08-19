@@ -108,3 +108,19 @@ protoc:
 		--proto_path $(PROTO_DIR) \
 		--go_out=plugins=grpc:. \
 		$(PROTO_FILE)
+
+# ---
+# GraphQL: https://graphql.org/
+# ---
+
+.PHONY: gqlgen-install
+gqlgen-install:
+	@hash gqlgen > /dev/null 2>&1; if [ $$? -ne 0 ]; then \
+		$(GOGET) github.com/99designs/gqlgen; \
+	fi
+
+.PHONY: xo-install
+xo-install:
+	@hash xo > /dev/null 2>&1; if [ $$? -ne 0 ]; then \
+		$(GOGET) github.com/xo/xo; \
+	fi

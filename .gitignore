@@ -19,3 +19,4 @@
 outputs
 *.pb.go
 .vscode
+*.csv
