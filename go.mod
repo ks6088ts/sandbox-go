@@ -10,6 +10,7 @@ require (
 	github.com/gocolly/colly/v2 v2.1.0
 	github.com/golang/protobuf v1.4.2
 	github.com/hashicorp/golang-lru v0.5.4 // indirect
+	github.com/influxdata/influxdb-client-go/v2 v2.0.1
 	github.com/lib/pq v1.8.0
 	github.com/matryer/moq v0.0.0-20200607124540-4638a53893e6 // indirect
 	github.com/mitchellh/go-homedir v1.1.0

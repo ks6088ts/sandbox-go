@@ -19,11 +19,16 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 */
+
+// Package cmd ...
 package cmd
 
 import (
+	"context"
 	"fmt"
+	"os"
 
+	influxdb2 "github.com/influxdata/influxdb-client-go/v2"
 	"github.com/spf13/cobra"
 )
 
@@ -38,7 +43,19 @@ Cobra is a CLI library for Go that empowers applications.
 This application is a tool to generate the needed files
 to quickly create a Cobra application.`,
 	Run: func(cmd *cobra.Command, args []string) {
-		fmt.Println("influxdb called")
+		userName := "user"
+		password := "password"
+		// Create a new client using an InfluxDB server base URL and an authentication token
+		// For authentication token supply a string in the form: "username:password" as a token. Set empty value for an unauthenticated server
+		client := influxdb2.NewClient("http://influxdb:8086", fmt.Sprintf("%s:%s", userName, password))
+		defer client.Close()
+
+		result, err := client.Health(context.Background())
+		if err != nil {
+			fmt.Printf("Query error: %s\n", err.Error())
+			os.Exit(1)
+		}
+		fmt.Println(fmt.Sprintf("%s:%s", result.Name, result.Status))
 	},
 }
 
