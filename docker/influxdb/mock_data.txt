@@ -1,0 +1,4 @@
+cpu_load_short,host=server02,region=us-west value=0.1 1597901125
+cpu_load_short,host=server02,region=us-west value=0.2 1597901126
+cpu_load_short,host=server02,region=us-west value=0.3 1597901127
+cpu_load_short,host=server02,region=us-west value=0.4 1597901128
