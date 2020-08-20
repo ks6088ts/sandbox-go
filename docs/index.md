@@ -87,6 +87,46 @@ select * from <table>;
 * [駅データ.jp > ダウンロード](https://ekidata.jp/dl/)
 * [Connecting to a PostgreSQL database with Go's database/sql package](https://www.calhoun.io/connecting-to-a-postgresql-database-with-gos-database-sql-package/)
 
+# InfluxDB
+
+**InfluxDB API**
+
+```bash
+curl -i \
+    -u user:password \
+    -XPOST http://localhost:8086/query \
+    --data-urlencode "q=CREATE DATABASE db"
+
+curl -i \
+    -u user:password \
+    -XPOST 'http://localhost:8086/write?db=db' \
+    --data-binary @mock_data.txt
+
+curl -i \
+    -u user:password \
+    -XPOST http://localhost:8086/query \
+    --data-urlencode "q=DROP DATABASE db"
+```
+
+**influx command**
+
+```bash
+docker-compose -f docker-compose.db.yml exec influxdb bash
+
+# interactive shell
+influx --username user --password password --database db
+use db
+select * from cpu_load_short
+
+# one shot command
+influx --username user --password password --database db \
+    --execute "select * from cpu_load_short" --format csv
+```
+
+## Links
+* [Write data with the InfluxDB API](https://docs.influxdata.com/influxdb/v1.8/guides/write_data/)
+* [Using influx - InfluxDB command line interface](https://docs.influxdata.com/influxdb/v1.8/tools/shell/)
+
 # Docker
 
 ```bash
