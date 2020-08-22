@@ -14,4 +14,6 @@ COPY Makefile Makefile
 RUN make grpc-install && \
     make tools-install && \
     make lint-install && \
-    make cobra-install
+    make cobra-install && \
+    make gqlgen-install && \
+    make xo-install 
