@@ -19,10 +19,12 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 */
+
+// Package cmd ...
 package cmd
 
 import (
-	"fmt"
+	"github.com/gin-gonic/gin"
 
 	"github.com/spf13/cobra"
 )
@@ -38,7 +40,13 @@ Cobra is a CLI library for Go that empowers applications.
 This application is a tool to generate the needed files
 to quickly create a Cobra application.`,
 	Run: func(cmd *cobra.Command, args []string) {
-		fmt.Println("apiServer called")
+		r := gin.Default()
+		r.GET("/ping", func(c *gin.Context) {
+			c.JSON(200, gin.H{
+				"message": "pong",
+			})
+		})
+		r.Run() // listen and serve on 0.0.0.0:8080 (for windows "localhost:8080")
 	},
 }
 
