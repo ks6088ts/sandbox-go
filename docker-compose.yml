@@ -15,6 +15,8 @@ services:
     environment:
       - HTTP_PROXY=${COMMON_HTTP_PROXY}
       - HTTPS_PROXY=${COMMON_HTTPS_PROXY}
+    ports:
+      - ${GO_PORT}:8080
     networks:
       - shared-network
 

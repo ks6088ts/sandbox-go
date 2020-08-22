@@ -7,6 +7,7 @@ require (
 	github.com/agnivade/levenshtein v1.1.0 // indirect
 	github.com/denisenkom/go-mssqldb v0.0.0-20200620013148-b91950f658ec // indirect
 	github.com/fsnotify/fsnotify v1.4.9 // indirect
+	github.com/gin-gonic/gin v1.6.3
 	github.com/gocolly/colly/v2 v2.1.0
 	github.com/golang/protobuf v1.4.2
 	github.com/hashicorp/golang-lru v0.5.4 // indirect
