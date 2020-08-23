@@ -8,9 +8,6 @@ import (
 	"fmt"
 	"math/rand"
 
-	// import PostgreSQL driver
-	_ "github.com/lib/pq"
-
 	"github.com/ks6088ts/sandbox-go/pkg/gql/generated"
 	"github.com/ks6088ts/sandbox-go/pkg/gql/model"
 )

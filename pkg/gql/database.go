@@ -3,6 +3,9 @@ package gql
 import (
 	"database/sql"
 	"fmt"
+
+	// PostgreSQL driver
+	_ "github.com/lib/pq"
 )
 
 // DatabaseConfig ...
