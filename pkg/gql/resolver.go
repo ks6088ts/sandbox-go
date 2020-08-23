@@ -2,6 +2,7 @@ package gql
 
 import (
 	"context"
+	"database/sql"
 	"errors"
 
 	"github.com/ks6088ts/sandbox-go/pkg/gql/model"
@@ -16,18 +17,11 @@ import (
 type Resolver struct {
 	todos    []*model.Todo
 	stations []*xo.Station
-	DbConfig DatabaseConfig
+	Db       *sql.DB
 }
 
 func (r *Resolver) getStationByCD(ctx context.Context, stationCd *int) (*model.Station, error) {
-	db, err := getDatabase(r.DbConfig)
-	defer db.Close()
-
-	if err != nil {
-		return nil, errors.New("Failed to connect database")
-	}
-
-	station, err := xo.StationByStationCd(db, *stationCd)
+	station, err := xo.StationByStationCd(r.Db, *stationCd)
 	if err != nil {
 		return nil, errors.New("Failed to retrieve station")
 	}
