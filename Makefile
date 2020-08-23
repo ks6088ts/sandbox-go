@@ -55,7 +55,7 @@ tidy: ## tidy
 	go mod tidy
 
 .PHONY: ci
-ci: lint vet build test ## run ci tests
+ci: protoc lint vet build test ## run ci tests
 	$(BIN_PATH) --help
 	$(BIN_PATH) hello --help
 

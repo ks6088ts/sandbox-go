@@ -25,5 +25,4 @@ jobs:
       - name: CI
         run: |
           make grpc-install
-          make protoc
           make ci

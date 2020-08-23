@@ -24,14 +24,20 @@ THE SOFTWARE.
 package cmd
 
 import (
+	"fmt"
 	"log"
 	"net/http"
+
+	"database/sql"
 
 	"github.com/99designs/gqlgen/graphql/handler"
 	"github.com/99designs/gqlgen/graphql/playground"
 	"github.com/ks6088ts/sandbox-go/pkg/gql"
 	"github.com/ks6088ts/sandbox-go/pkg/gql/generated"
 	"github.com/spf13/cobra"
+
+	// PostgreSQL driver
+	_ "github.com/lib/pq"
 )
 
 // gqlServerCmd represents the gqlServer command
@@ -45,24 +51,31 @@ Cobra is a CLI library for Go that empowers applications.
 This application is a tool to generate the needed files
 to quickly create a Cobra application.`,
 	Run: func(cmd *cobra.Command, args []string) {
-		port := "8080"
+
+		db, err := sql.Open("postgres",
+			fmt.Sprintf("host=%s port=%d user=%s "+
+				"password=%s dbname=%s sslmode=disable",
+				"postgresql",
+				5432,
+				"user",
+				"password",
+				"db"))
+		if err != nil {
+			fmt.Println("Failed to connect database")
+			return
+		}
+		defer db.Close()
+
 		srv := handler.NewDefaultServer(generated.NewExecutableSchema(generated.Config{Resolvers: &gql.Resolver{
-			DbConfig: gql.DatabaseConfig{
-				Driver:   "postgres",
-				Host:     "postgresql",
-				Port:     5432,
-				User:     "user",
-				Password: "password",
-				Dbname:   "db",
-			},
+			Db: db,
 		}}))
 
 		http.Handle("/", playground.Handler("GraphQL playground", "/query"))
 		http.Handle("/query", srv)
 
+		port := "8080"
 		log.Printf("connect to http://localhost:%s/ for GraphQL playground", port)
 		log.Fatal(http.ListenAndServe(":"+port, nil))
-
 	},
 }
 
