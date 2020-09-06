@@ -100,7 +100,7 @@ PROTO_FILE ?= $(PROTO_DIR)/helloworld.proto
 .PHONY: grpc-install
 grpc-install:
 	$(GOGET) github.com/golang/protobuf/protoc-gen-go
-	sudo apt-get install -y protobuf-compiler
+	sudo -E apt-get install -y protobuf-compiler
 
 .PHONY: protoc
 protoc:

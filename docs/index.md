@@ -7,15 +7,17 @@
 1. install [Remote - Containers](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-containers), `ms-vscode-remote.remote-containers`
 
 ### Links
-* [Docker Compose keep container running](https://stackoverflow.com/a/55953120)
-* [microsoft/vscode-remote-try-go](https://github.com/microsoft/vscode-remote-try-go)
+
+-   [Docker Compose keep container running](https://stackoverflow.com/a/55953120)
+-   [microsoft/vscode-remote-try-go](https://github.com/microsoft/vscode-remote-try-go)
 
 ## Settings
 
 1. `cmd + ,` to open settings
 
 ### Links
-* [GitHub: vscode-textbook](https://github.com/vscode-textbook)
+
+-   [GitHub: vscode-textbook](https://github.com/vscode-textbook)
 
 # Go Modules
 
@@ -30,22 +32,23 @@ go mod tidy
 # gRPC
 
 ## Links
-* [Go plugin for the protocol compiler](https://grpc.io/docs/languages/go/quickstart/#prerequisites)
-* [Protocol Buffer Compiler Installation](https://grpc.io/docs/protoc-installation/#install-using-a-package-manager)
-* [grpc-go/examples/helloworld](https://github.com/grpc/grpc-go/tree/master/examples/helloworld)
+
+-   [Go plugin for the protocol compiler](https://grpc.io/docs/languages/go/quickstart/#prerequisites)
+-   [Protocol Buffer Compiler Installation](https://grpc.io/docs/protoc-installation/#install-using-a-package-manager)
+-   [grpc-go/examples/helloworld](https://github.com/grpc/grpc-go/tree/master/examples/helloworld)
 
 # Grafana
 
 ## Links
 
-* [Configure with environment variables](https://grafana.com/docs/grafana/latest/administration/configuration/#configure-with-environment-variables)
-* [Provisioning Grafana:Data sources](https://grafana.com/docs/grafana/latest/administration/provisioning/#data-sources)
+-   [Configure with environment variables](https://grafana.com/docs/grafana/latest/administration/configuration/#configure-with-environment-variables)
+-   [Provisioning Grafana:Data sources](https://grafana.com/docs/grafana/latest/administration/provisioning/#data-sources)
 
 # Prometheus
 
 ## Links
 
-* [Prometheus:GETTING STARTED](https://prometheus.io/docs/prometheus/latest/getting_started/#getting-started)
+-   [Prometheus:GETTING STARTED](https://prometheus.io/docs/prometheus/latest/getting_started/#getting-started)
 
 # GraphQL
 
@@ -60,7 +63,7 @@ query findStations {
 
 ## Links
 
-* [春の入門祭り🌸 #7 作って学ぶGraphQL。gqlgenを用いて鉄道データ検索API開発入門](https://future-architect.github.io/articles/20200609/)
+-   [春の入門祭り 🌸 #7 作って学ぶ GraphQL。gqlgen を用いて鉄道データ検索 API 開発入門](https://future-architect.github.io/articles/20200609/)
 
 # PostgreSQL
 
@@ -83,9 +86,9 @@ select * from <table>;
 
 ## Links
 
-* [PostgreSQLの基本的なコマンド](https://qiita.com/H-A-L/items/fe8cb0e0ee0041ff3ceb)
-* [駅データ.jp > ダウンロード](https://ekidata.jp/dl/)
-* [Connecting to a PostgreSQL database with Go's database/sql package](https://www.calhoun.io/connecting-to-a-postgresql-database-with-gos-database-sql-package/)
+-   [PostgreSQL の基本的なコマンド](https://qiita.com/H-A-L/items/fe8cb0e0ee0041ff3ceb)
+-   [駅データ.jp > ダウンロード](https://ekidata.jp/dl/)
+-   [Connecting to a PostgreSQL database with Go's database/sql package](https://www.calhoun.io/connecting-to-a-postgresql-database-with-gos-database-sql-package/)
 
 # InfluxDB
 
@@ -124,8 +127,9 @@ influx --username user --password password --database db \
 ```
 
 ## Links
-* [Write data with the InfluxDB API](https://docs.influxdata.com/influxdb/v1.8/guides/write_data/)
-* [Using influx - InfluxDB command line interface](https://docs.influxdata.com/influxdb/v1.8/tools/shell/)
+
+-   [Write data with the InfluxDB API](https://docs.influxdata.com/influxdb/v1.8/guides/write_data/)
+-   [Using influx - InfluxDB command line interface](https://docs.influxdata.com/influxdb/v1.8/tools/shell/)
 
 # Docker
 
@@ -134,11 +138,14 @@ docker-compose build cli
 docker run --rm sandbox-go_cli ./cli --help
 ```
 
+Note: Docker container which mounts host directories won't be started until when `settings > Resources > File Sharing` is set correctly.
+
 ## Links
-* [Networking in Compose: Specify custom networks](https://docs.docker.com/compose/networking/#specify-custom-networks)
-* [Issues with COPY when using multistage Dockerfile builds — no such file or directory](https://stackoverflow.com/a/50070187)
-* [Issue with Docker multi-stage builds](https://stackoverflow.com/a/56057877)
-* [Using cgo with the go command](https://golang.org/cmd/cgo/#hdr-Using_cgo_with_the_go_command)
+
+-   [Networking in Compose: Specify custom networks](https://docs.docker.com/compose/networking/#specify-custom-networks)
+-   [Issues with COPY when using multistage Dockerfile builds — no such file or directory](https://stackoverflow.com/a/50070187)
+-   [Issue with Docker multi-stage builds](https://stackoverflow.com/a/56057877)
+-   [Using cgo with the go command](https://golang.org/cmd/cgo/#hdr-Using_cgo_with_the_go_command)
 
 # xo
 
@@ -153,11 +160,10 @@ xo "pgsql://user:password@postgresql/db?sslmode=disable" -o pkg/gql/xo
 
 ## Links
 
-* [xo/xo](https://github.com/xo/xo)
-
+-   [xo/xo](https://github.com/xo/xo)
 
 # gin
 
 ## Links
 
-* [gin-gonic/gin](https://github.com/gin-gonic/gin)
+-   [gin-gonic/gin](https://github.com/gin-gonic/gin)
