@@ -17,6 +17,5 @@
 # Project
 .env
 outputs
-*.pb.go
 .vscode
 *.csv
