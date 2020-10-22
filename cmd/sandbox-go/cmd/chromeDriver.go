@@ -19,6 +19,8 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 */
+
+// Package cmd ...
 package cmd
 
 import (
@@ -32,19 +34,22 @@ import (
 	"github.com/spf13/viper"
 )
 
+// Qiita ...
 type Qiita struct {
-	User      string
-	Password  string
-	Login_url string
+	User     string
+	Password string
+	URL      string
 }
 
+// Setting ...
 type Setting struct {
 	Browser string
 }
 
+// Task ...
 type Task struct {
 	Xpath string
-	Url   string
+	URL   string
 }
 
 type chromeDriverCmdConfig struct {
@@ -54,8 +59,8 @@ type chromeDriverCmdConfig struct {
 }
 
 func loginQiita(page *agouti.Page, config *chromeDriverCmdConfig) error {
-	if err := page.Navigate(config.Qiita.Login_url); err != nil {
-		log.Printf("Failed to navigate page %v", config.Qiita.Login_url)
+	if err := page.Navigate(config.Qiita.URL); err != nil {
+		log.Printf("Failed to navigate page %v", config.Qiita.URL)
 		return err
 	}
 	log.Info(page.Title())
@@ -83,7 +88,7 @@ func getDriver(browser string) *agouti.WebDriver {
 				"--headless",             // headlessモードの指定
 				"--window-size=1280,800", // ウィンドウサイズの指定
 			}),
-			agouti.Debug,
+			// agouti.Debug,
 		)
 	}
 	return agouti.ChromeDriver()
@@ -106,7 +111,7 @@ to quickly create a Cobra application.`,
 			os.Exit(1)
 		}
 
-		log.Printf("config: %v", config)
+		// log.Printf("config: %v", config)
 		// os.Exit(0)
 
 		driver := getDriver(config.Setting.Browser)
@@ -129,18 +134,18 @@ to quickly create a Cobra application.`,
 		// }
 
 		for _, task := range config.Tasks {
-			if err := page.Navigate(task.Url); err != nil {
-				log.Printf("Failed to navigate page %v", task.Url)
+			if err := page.Navigate(task.URL); err != nil {
+				log.Printf("Failed to navigate page %v", task.URL)
 				driver.Stop()
 				os.Exit(1)
 			}
 			title, err := page.Title()
 			if err != nil {
-				log.Printf("Failed to get title %v", task.Url)
+				log.Printf("Failed to get title %v", task.URL)
 				driver.Stop()
 				os.Exit(1)
 			}
-			fmt.Printf("[%v](%v)\n", title, task.Url)
+			fmt.Printf("[%v](%v)\n", title, task.URL)
 			items := page.AllByXPath(task.Xpath)
 			itemsCount, err := items.Count()
 			if err != nil {

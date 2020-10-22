@@ -1,7 +1,7 @@
 qiita:
   user: hello
   password: world
-  login_url: https://qiita.com/login
+  url: https://qiita.com/login
 tasks:
   - url: https://qiita.com/
     xpath: //a[@class='tr-Item_title']
