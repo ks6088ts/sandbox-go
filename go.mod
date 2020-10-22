@@ -11,11 +11,13 @@ require (
 	github.com/golang/protobuf v1.4.2
 	github.com/hashicorp/golang-lru v0.5.4 // indirect
 	github.com/influxdata/influxdb-client-go/v2 v2.0.1
+	github.com/labstack/gommon v0.3.0
 	github.com/lib/pq v1.8.0
 	github.com/magiconair/properties v1.8.4 // indirect
 	github.com/mitchellh/go-homedir v1.1.0
 	github.com/mitchellh/mapstructure v1.3.3 // indirect
 	github.com/pelletier/go-toml v1.8.1 // indirect
+	github.com/sclevine/agouti v3.0.0+incompatible
 	github.com/slack-go/slack v0.6.5
 	github.com/spf13/afero v1.4.1 // indirect
 	github.com/spf13/cast v1.3.1 // indirect
