@@ -167,3 +167,13 @@ xo "pgsql://user:password@postgresql/db?sslmode=disable" -o pkg/gql/xo
 ## Links
 
 -   [gin-gonic/gin](https://github.com/gin-gonic/gin)
+
+# agouti
+
+```bash
+# install chrome driver
+brew install chromedriver
+
+# or download chromedriver from https://chromedriver.chromium.org/downloads and set path to it
+# permission on mac: https://support.apple.com/ja-jp/guide/mac-help/mh40616/mac
+```
